@@ -1,0 +1,9 @@
+.information-wrapper {
+  padding: 16px;
+  cursor: pointer;
+  border-top: solid 6px #e5e5e5;
+}
+
+.information-wrapper:last-of-type {
+  border-bottom: solid 6px #e5e5e5;
+}

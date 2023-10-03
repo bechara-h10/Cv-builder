@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color: #e5e5e5;
+}
+
+main {
+  width: 100vw;
+  margin: auto;
+  padding: 16px 200px;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

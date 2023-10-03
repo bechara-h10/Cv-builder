@@ -1,0 +1,10 @@
+.create-form-button {
+  border: none;
+  border-radius: 100px;
+  border: solid 3px #ddd;
+  padding: 8px 16px;
+  margin: 16px auto;
+  display: block;
+  cursor: pointer;
+  background-color: transparent;
+}

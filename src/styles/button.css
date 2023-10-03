@@ -1,0 +1,22 @@
+button.selected {
+  background-color: #eee;
+}
+
+nav button {
+  background-color: #fff;
+  border: none;
+  padding: 16px 8px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+nav button:active {
+  transform: scale(0.9);
+}

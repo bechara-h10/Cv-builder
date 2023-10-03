@@ -1,0 +1,11 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  gap: 8px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+}
