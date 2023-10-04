@@ -5,18 +5,23 @@
   font-family: "Roboto", sans-serif;
 }
 
+:root {
+  --accent-color: #0e374e;
+}
+
 html,
 body {
   margin: 0;
   height: 100%;
   background-color: #e5e5e5;
+  overflow-x: hidden;
 }
 
 main {
   width: 100vw;
   margin: auto;
   padding: 16px 200px;
-  height: 75vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 24px;

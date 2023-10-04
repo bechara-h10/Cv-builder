@@ -1,0 +1,67 @@
+.picker {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 0 16px 16px 16px;
+  max-width: 500px;
+}
+
+.picker h1 {
+  margin: 16 0;
+}
+
+.customize-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.visual-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.visual {
+  width: 50px;
+  height: 50px;
+  border: solid 1px #aaa;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.top-visual {
+  background: linear-gradient(180deg, #0e374e 50%, #fff 50%);
+}
+
+.left-visual {
+  background: linear-gradient(90deg, #0e374e 50%, #fff 50%);
+}
+
+.right-visual {
+  background: linear-gradient(-90deg, #0e374e 50%, #fff 50%);
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+
+input[type="color"]:focus {
+  outline: none;
+}

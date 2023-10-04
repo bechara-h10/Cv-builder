@@ -1,0 +1,100 @@
+.resume-wrapper {
+  margin-left: auto;
+  width: 50%;
+  max-width: 750px;
+  background-color: #fff;
+  height: 100%;
+  position: absolute;
+  right: 10%;
+  display: flex;
+}
+
+.resume-wrapper.top {
+  flex-direction: column;
+}
+
+.resume-wrapper.right {
+  flex-direction: row-reverse;
+}
+
+.resume-wrapper.left .personal-info-wrapper,
+.resume-wrapper.right .personal-info-wrapper {
+  max-width: 350px;
+}
+
+.resume-wrapper.left .personal-info-wrapper .other,
+.resume-wrapper.right .personal-info-wrapper .other {
+  flex-direction: column;
+  margin-bottom: auto;
+  align-items: start;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resume-wrapper h1,
+.resume-wrapper h3 {
+  margin: 0;
+}
+
+.personal-info-wrapper {
+  width: 100%;
+  background-color: var(--accent-color);
+  min-height: 175px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.bottom-section {
+  width: 100%;
+}
+
+.resume-wrapper h1 {
+  text-align: center;
+}
+
+.personal-info-wrapper .other {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.info-wrapper {
+  padding: 16px;
+}
+
+.info-wrapper h3 {
+  text-align: center;
+  width: 100%;
+  background-color: #eef1f3;
+}
+
+.info div {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+  row-gap: 8px;
+  padding-top: 8px;
+}
+
+.info div .left-side,
+.info div .right-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+span:not(.large) {
+  width: max-content;
+}
+
+.large {
+  max-width: 75%;
+}

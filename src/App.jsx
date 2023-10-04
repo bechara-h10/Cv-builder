@@ -8,6 +8,11 @@ import CreateForm from "./components/CreateForm";
 import ExperienceForm from "./components/experience/ExperienceForm";
 import EducationInfo from "./components/education/EducationInfo";
 import ExperienceInfo from "./components/experience/ExperienceInfo";
+import ResumeLayout from "./components/ResumeLayout";
+import LayoutPicker from "./components/LayoutPicker";
+import ColorPicker from "./components/ColorPicker";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 function App() {
   const [educationIndex, setEducationIndex] = useState(0);
@@ -25,6 +30,8 @@ function App() {
   });
   const [educationSection, setEducationSection] = useState([]);
   const [experienceSection, setExperienceSection] = useState([]);
+  const [layout, setLayout] = useState("top");
+  const [accentColor, setAccentColor] = useState("#0e374e");
   const createEducationSection = () => {
     const newSection = {
       school: "",
@@ -105,9 +112,44 @@ function App() {
     setExperienceForms((experienceForms) => [...experienceForms, form]);
   };
 
+  const clearResume = () => {
+    setPersonalInfo({ fullName: "", email: "", phoneNumber: "", address: "" });
+    setEducationForms([]);
+    setEducationIndex(0);
+    setEducationSection([]);
+    setExperienceForms([]);
+    setExperienceIndex(0);
+    setEducationSection([]);
+  };
+
+  const downloadPDF = async () => {
+    const pdf = new jsPDF();
+    const container = document.querySelector(".resume-wrapper");
+
+    if (container) {
+      const canvas = await html2canvas(container);
+      const imageData = canvas.toDataURL("image/png");
+
+      pdf.addImage(
+        imageData,
+        "PNG",
+        0,
+        0,
+        pdf.internal.pageSize.getWidth(),
+        pdf.internal.pageSize.getHeight()
+      );
+      pdf.save(`${personalInfo.fullName} Resume.pdf`);
+    }
+  };
+
   return (
     <>
-      <Sidebar selectedTab={selectedTab} changeSelected={setSelectedTab} />
+      <Sidebar
+        selectedTab={selectedTab}
+        changeSelected={setSelectedTab}
+        clearResume={clearResume}
+        downloadResume={downloadPDF}
+      />
       <main>
         {selectedTab === "content" && (
           <>
@@ -195,6 +237,19 @@ function App() {
             </Collapsable>
           </>
         )}
+        {selectedTab === "customize" && (
+          <>
+            <LayoutPicker setLayout={setLayout} />
+            <ColorPicker setAccentColor={setAccentColor} />
+          </>
+        )}
+        <ResumeLayout
+          personalInfo={personalInfo}
+          educationInfo={educationSection}
+          experienceInfo={experienceSection}
+          layout={layout}
+          accentColor={accentColor}
+        />
       </main>
     </>
   );

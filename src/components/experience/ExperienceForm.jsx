@@ -90,7 +90,7 @@ function ExperienceForm({
         <p>
           Description <span>(Optional)</span>
         </p>
-        <input
+        <textarea
           id="description"
           name="description"
           placeholder="Enter Description"

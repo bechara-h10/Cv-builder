@@ -15,16 +15,19 @@ label p {
   margin-bottom: 4px;
 }
 
-input {
+input,
+textarea {
   border-radius: 4px;
-  border: none;
+  border: 0px;
   background-color: #eee;
   font-size: 14px;
   padding: 8px;
   transition: outline 50ms ease;
+  background-color: #f3f4f6;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   outline: #0095f6 solid 2px;
 }
 
