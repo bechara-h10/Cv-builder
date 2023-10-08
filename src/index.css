@@ -18,11 +18,30 @@ body {
 }
 
 main {
-  width: 100vw;
-  margin: auto;
-  padding: 16px 200px;
+  padding: 24px;
   height: 100vh;
+  display: flex;
+  gap: 48px;
+}
+
+.edit-side,
+.resume-side {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.collapsables {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  flex: 1;
+}
+
+.customize-section {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex: 1;
 }

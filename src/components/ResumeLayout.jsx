@@ -21,13 +21,28 @@ function ResumeLayout({
         <h1>{personalInfo.fullName}</h1>
         <div className="other">
           <span>
-            <i className="fa-solid fa-envelope"></i> {personalInfo.email}
+            {personalInfo.email && (
+              <>
+                <i className="fa-solid fa-envelope"></i>{" "}
+                <span>{personalInfo.email}</span>
+              </>
+            )}
           </span>
           <span>
-            <i className="fa-solid fa-phone"></i> {personalInfo.phoneNumber}
+            {personalInfo.phoneNumber && (
+              <>
+                <i class="fa-solid fa-phone"></i>{" "}
+                <span>{personalInfo.phoneNumber}</span>
+              </>
+            )}
           </span>
           <span>
-            <i className="fa-solid fa-location-dot"></i> {personalInfo.address}
+            {personalInfo.address && (
+              <>
+                <i class="fa-solid fa-location-dot"></i>{" "}
+                <span>{personalInfo.address}</span>
+              </>
+            )}
           </span>
         </div>
       </div>

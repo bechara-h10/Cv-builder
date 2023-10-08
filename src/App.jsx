@@ -144,112 +144,120 @@ function App() {
 
   return (
     <>
-      <Sidebar
-        selectedTab={selectedTab}
-        changeSelected={setSelectedTab}
-        clearResume={clearResume}
-        downloadResume={downloadPDF}
-      />
       <main>
-        {selectedTab === "content" && (
-          <>
-            <Collapsable title="Personal Info">
-              <PersonalInfo
-                personalInfo={personalInfo}
-                setPersonalInfo={setPersonalInfo}
+        <div className="edit-side">
+          <Sidebar
+            selectedTab={selectedTab}
+            changeSelected={setSelectedTab}
+            clearResume={clearResume}
+            downloadResume={downloadPDF}
+          />
+
+          {selectedTab === "content" && (
+            <div className="collapsables">
+              <Collapsable title="Personal Info">
+                <PersonalInfo
+                  personalInfo={personalInfo}
+                  setPersonalInfo={setPersonalInfo}
+                />
+              </Collapsable>
+              <Collapsable title="Education">
+                {isCreating && educationForms[educationForms.length - 1]}
+                {!isCreating &&
+                  !isEditing &&
+                  educationSection.map((section, index) => {
+                    console.log(index);
+                    return (
+                      <EducationInfo
+                        id={index}
+                        educationInfo={section}
+                        setEducationIndex={setEducationIndex}
+                        setIsEditing={setIsEditing}
+                        key={index}
+                      />
+                    );
+                  })}
+                {!isCreating && !isEditing && (
+                  <CreateForm
+                    title="education"
+                    onClick={() => {
+                      createEducationForm();
+                      createEducationSection();
+                      setIsCreating(true);
+                    }}
+                  />
+                )}
+                {isEditing && (
+                  <EducationForm
+                    id={educationIndex}
+                    setEducationInfo={setEducationSection}
+                    key={educationIndex}
+                    deleteForm={(formIndex) => deleteEducationForm(formIndex)}
+                    setIsCreating={setIsCreating}
+                    setIsEditing={setIsEditing}
+                    information={educationSection[educationIndex]}
+                  />
+                )}
+              </Collapsable>
+              <Collapsable title="Experience">
+                {isCreating && experienceForms[experienceForms.length - 1]}
+                {!isCreating &&
+                  !isEditing &&
+                  experienceSection.map((section, index) => {
+                    console.log(index);
+                    return (
+                      <ExperienceInfo
+                        id={index}
+                        experienceInfo={section}
+                        setExperienceIndex={setExperienceIndex}
+                        setIsEditing={setIsEditing}
+                        key={index}
+                      />
+                    );
+                  })}
+                {!isCreating && !isEditing && (
+                  <CreateForm
+                    title="experience"
+                    onClick={() => {
+                      createExperienceForm();
+                      createExperienceSection();
+                      setIsCreating(true);
+                    }}
+                  />
+                )}
+                {isEditing && (
+                  <ExperienceForm
+                    id={experienceIndex}
+                    setExperienceInfo={setExperienceSection}
+                    key={experienceIndex}
+                    deleteForm={(formIndex) => deleteExperienceForm(formIndex)}
+                    setIsCreating={setIsCreating}
+                    setIsEditing={setIsEditing}
+                    information={experienceSection[experienceIndex]}
+                  />
+                )}
+              </Collapsable>
+            </div>
+          )}
+          {selectedTab === "customize" && (
+            <div className="customize-section">
+              <LayoutPicker setLayout={setLayout} />
+              <ColorPicker
+                setAccentColor={setAccentColor}
+                accentColor={accentColor}
               />
-            </Collapsable>
-            <Collapsable title="Education">
-              {isCreating && educationForms[educationForms.length - 1]}
-              {!isCreating &&
-                !isEditing &&
-                educationSection.map((section, index) => {
-                  console.log(index);
-                  return (
-                    <EducationInfo
-                      id={index}
-                      educationInfo={section}
-                      setEducationIndex={setEducationIndex}
-                      setIsEditing={setIsEditing}
-                      key={index}
-                    />
-                  );
-                })}
-              {!isCreating && !isEditing && (
-                <CreateForm
-                  title="education"
-                  onClick={() => {
-                    createEducationForm();
-                    createEducationSection();
-                    setIsCreating(true);
-                  }}
-                />
-              )}
-              {isEditing && (
-                <EducationForm
-                  id={educationIndex}
-                  setEducationInfo={setEducationSection}
-                  key={educationIndex}
-                  deleteForm={(formIndex) => deleteEducationForm(formIndex)}
-                  setIsCreating={setIsCreating}
-                  setIsEditing={setIsEditing}
-                  information={educationSection[educationIndex]}
-                />
-              )}
-            </Collapsable>
-            <Collapsable title="Experience">
-              {isCreating && experienceForms[experienceForms.length - 1]}
-              {!isCreating &&
-                !isEditing &&
-                experienceSection.map((section, index) => {
-                  console.log(index);
-                  return (
-                    <ExperienceInfo
-                      id={index}
-                      experienceInfo={section}
-                      setExperienceIndex={setExperienceIndex}
-                      setIsEditing={setIsEditing}
-                      key={index}
-                    />
-                  );
-                })}
-              {!isCreating && !isEditing && (
-                <CreateForm
-                  title="experience"
-                  onClick={() => {
-                    createExperienceForm();
-                    createExperienceSection();
-                    setIsCreating(true);
-                  }}
-                />
-              )}
-              {isEditing && (
-                <ExperienceForm
-                  id={experienceIndex}
-                  setExperienceInfo={setExperienceSection}
-                  key={experienceIndex}
-                  deleteForm={(formIndex) => deleteExperienceForm(formIndex)}
-                  setIsCreating={setIsCreating}
-                  setIsEditing={setIsEditing}
-                  information={experienceSection[experienceIndex]}
-                />
-              )}
-            </Collapsable>
-          </>
-        )}
-        {selectedTab === "customize" && (
-          <>
-            <LayoutPicker setLayout={setLayout} />
-            <ColorPicker setAccentColor={setAccentColor} />
-          </>
-        )}
-        <ResumeLayout
-          personalInfo={personalInfo}
-          educationInfo={educationSection}
-          experienceInfo={experienceSection}
-          layout={layout}
-          accentColor={accentColor}
-        />
+            </div>
+          )}
+        </div>
+        <div className="resume-side">
+          <ResumeLayout
+            personalInfo={personalInfo}
+            educationInfo={educationSection}
+            experienceInfo={experienceSection}
+            layout={layout}
+            accentColor={accentColor}
+          />
+        </div>
       </main>
     </>
   );

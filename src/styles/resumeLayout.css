@@ -1,11 +1,8 @@
 .resume-wrapper {
-  margin-left: auto;
-  width: 50%;
+  width: 100%;
   max-width: 750px;
   background-color: #fff;
   height: 100%;
-  position: absolute;
-  right: 10%;
   display: flex;
 }
 

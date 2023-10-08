@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/picker.css";
 
-function ColorPicker({ setAccentColor }) {
+function ColorPicker({ setAccentColor, accentColor }) {
   return (
     <div className="picker">
       <h1>Color</h1>
@@ -11,6 +11,7 @@ function ColorPicker({ setAccentColor }) {
           type="color"
           name="color"
           id="color"
+          value={accentColor}
           onChange={(e) => setAccentColor(e.target.value)}
         />
       </div>

@@ -1,11 +1,15 @@
 nav {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  left: 16px;
-  top: 16px;
   gap: 8px;
   background-color: white;
   padding: 12px;
   border-radius: 8px;
+  flex: 0;
+  height: max-content;
+}
+@media (width <= 768px) {
+  nav {
+    flex: 1;
+  }
 }
